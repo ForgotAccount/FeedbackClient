@@ -27,8 +27,9 @@ namespace FeedbackClient
         public MainWindow()
         {
             InitializeComponent();
-            tbCoCode.Text = ConfigurationManager.AppSettings["CompanyCode"];
-            tbSortingLineCode.Text = ConfigurationManager.AppSettings["SortLineCode"];
+            tbUrl.Text = GetConfig(keyName: "ServerURL");
+            tbCoCode.Text = GetConfig(keyName: "CompanyCode");
+            tbSortingLineCode.Text = GetConfig(keyName: "SortLineCode");
             _orderPOCOs = GetOrderDatas();
         }
         private List<OrderPOCO> GetOrderDatas()
@@ -124,7 +125,7 @@ namespace FeedbackClient
             try
             {
                 var response = await SendDataToServer(apiUrl, sendData);
-                tbResponse.Text = $"消息: {response.ToString()}";
+                tbResponse.Text = $"消息: {response}";
                 tbResponse.Foreground = new SolidColorBrush(Colors.Green);
             }
             catch (Exception ex)
@@ -167,5 +168,6 @@ namespace FeedbackClient
                 return await response.Content.ReadAsStringAsync();
             }
         }
+        private string GetConfig(string keyName) => ConfigurationManager.AppSettings[keyName];
     }
 }

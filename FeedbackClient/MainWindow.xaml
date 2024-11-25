@@ -13,8 +13,8 @@
                     <ColumnDefinition Width=".1*"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="地址:"/>
-                <TextBox x:Name="tbUrl" Grid.Column="1" Text="https://localhost:8000/api/feedback"/>
+                <TextBlock Text="地&#x0020;&#x0020;&#x0020;&#x0020;址 :"/>
+                <TextBox x:Name="tbUrl" Grid.Column="1" />
             </Grid>
             <Grid Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
